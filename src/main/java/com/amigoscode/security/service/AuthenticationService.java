@@ -52,12 +52,12 @@ public class AuthenticationService {
 
         try {
             Authentication auth = authenticationManager.authenticate(
-                    new UsernamePasswordAuthenticationToken(username,)
+                    new UsernamePasswordAuthenticationToken(username,password)
             );
 
             String token = tokenService.generateJwt(auth);
 
-            return new LoginResponseDTO(userRepository.findByUserName(username).get((new User()), token);
+            return new LoginResponseDTO(userRepository.findByUserName(username).get(),token);
         }
         catch (AuthenticationException e){
             return new LoginResponseDTO(null,"");
